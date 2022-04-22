@@ -1,0 +1,44 @@
+<div class="profile"><img src="/assets/profile.png" alt="default user">
+    <h3>User Info:</h3>
+
+    <ng-container *ngIf="!!currentUser">
+        <ng-container *ngIf="!isInEditMode">
+            <div class="flex">
+                <p>Username: </p>
+                <p>{{currentUser.username}}</p>
+            </div>
+            <div class="flex">
+                <p>Email: </p>
+                <p>{{currentUser.email}}</p>
+            </div>
+            <div class="flex">
+                <p>Phone: </p>
+                <p>{{currentUser.tel}}</p>
+            </div>
+            <button (click)="enterEditMode()" class="edit-button">Edit</button>
+        </ng-container>
+
+
+        <ng-container *ngIf="isInEditMode">
+            <form #editProfileForm="ngForm" (ngSubmit)="updateProfile(editProfileForm)">
+                <div class="flex">
+                    <p>Username: </p>
+                    <p>{{currentUser.username}}</p>
+                </div>
+                <div class="flex">
+                    <p>Email: </p>
+                    <input type="email" #email="ngModel"  [class.input-error]="email.touched && email.invalid" ngModel required emailValidator name="email" id="email" value="john.doe@gmail.com">
+                </div>
+                <div class="flex">
+                    <p>Phone: </p>
+                    <div>
+                        <input #tel="ngModel"  [class.input-error]="tel.touched && tel.invalid" ngModel required minlength="10" type="text" name="tel" id="tel" value="885 888 888">
+                    </div>
+                </div>
+                <button (click)="isInEditMode = false" class="red-button">Cancel</button>
+                <button [disabled]="editProfileForm.invalid" class="green-button">Save</button>
+            </form>
+        </ng-container>
+    </ng-container>
+
+</div>
