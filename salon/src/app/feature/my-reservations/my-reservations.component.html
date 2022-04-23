@@ -1,10 +1,10 @@
 <div *ngIf="themeList">
     <p *ngFor="let theme of themeList" [theme]="theme">
 
-  {{username}} имате запазен час за {{theme.themeName}} ч.!
+  {{username}} имате запазен час за {{theme.themeName}}!
 
     </p>
-    <div *ngIf="themeList.length === 0">No Themes!</div>
+    <div *ngIf="themeList.length === 0">Нямате запазени часове!</div>
   </div>
   <div *ngIf="!themeList">
     Loading...
