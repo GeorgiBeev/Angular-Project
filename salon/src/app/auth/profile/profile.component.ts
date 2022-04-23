@@ -25,6 +25,8 @@ export class ProfileComponent implements OnInit {
         this.currentUser = user;
       },
       error: () => {
+        console.log('profil');
+        
         this.router.navigate(['/login'])
       }
     })

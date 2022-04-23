@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { IUser } from './interfaces/user';
 //import { StorageService } from './storage.service';
 import { tap } from 'rxjs/operators';
+import { ITheme } from './interfaces/theme';
 
 export interface IUpdateUserDto extends Pick<IUser, 'username' | 'email' | 'tel'> {
 }
@@ -32,4 +33,30 @@ export class UserService {
     return this.httpClient.put<IUser>(`${environment.apiUrl}/users/profile`, newUser, { withCredentials: true })
   }
 
+  reservationHour$(body: { themeName: string/*, postText: string */}): Observable<ITheme> {
+    return this.httpClient.post<ITheme>(`${environment.apiUrl}/themes`, body, { withCredentials: true });
+  }
+
+  loadTheamList(): Observable<ITheme[]>{
+    return this.httpClient.get<ITheme[]>(`${environment.apiUrl}/themes`)
+  }
+
 }
+
+/*
+loadThemeList(): Observable<ITheme[]> {
+    return this.http.get<ITheme[]>(`${apiUrl}/themes`);
+  }
+constructor(private http: HttpClient) { }
+
+loadPostList(themeId: string, limit?: number): Observable<IPost[]> {
+  return this.http.get<IPost[]>(
+    `${apiUrl}/posts${limit ? `?limit=${limit}` : ''}`
+  );
+}
+ switchMap(searchTerm => this.themeService.loadThemeList(searchTerm))
+    )
+      .subscribe(themeList => {
+        this.themeList = themeList;
+      });
+  }*/

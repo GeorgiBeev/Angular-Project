@@ -1,6 +1,10 @@
 import { RouterModule, Routes } from "@angular/router";
+import { AuthGuard } from "./core/guard/auth.guard";
+import { MyReservationsComponent } from "./feature/my-reservations/my-reservations.component";
 import { HomePageComponent } from "./feature/pages/home-page/home-page.component";
 import { NotFoundPageComponent } from "./feature/pages/not-found-page/not-found-page.component";
+import { ProceduresComponent } from "./feature/procedures/procedures.component";
+import { ReservationComponent } from "./feature/reservation/reservation.component";
 
 const routes: Routes = [
     {
@@ -11,6 +15,20 @@ const routes: Routes = [
     {
         path: 'home',
         component: HomePageComponent
+    },
+    {
+        path: 'procedures',
+        component: ProceduresComponent
+    },
+    {
+        path: 'reservation',
+        canActivate: [AuthGuard],
+        component: ReservationComponent
+    },
+    {
+        path: 'my-reservations',
+        canActivate: [AuthGuard],
+        component: MyReservationsComponent
     },
     {
         path: '**',

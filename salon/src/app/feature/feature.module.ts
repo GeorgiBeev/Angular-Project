@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { MyReservationsComponent } from './my-reservations/my-reservations.component';
 import { ProceduresComponent } from './procedures/procedures.component';
 import { ReservationComponent } from './reservation/reservation.component';
-import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from '../app-routing.module';
 
 
 
@@ -14,7 +15,8 @@ import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.com
     ReservationComponent,
     MyReservationsComponent,],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [],
 })
