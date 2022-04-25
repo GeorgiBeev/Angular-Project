@@ -1,11 +1,21 @@
 <div *ngIf="themeList">
-    <p *ngFor="let theme of themeList" [theme]="theme">
-
-  {{username}} имате запазен час за {{theme.themeName}}!
-
-    </p>
-    <div *ngIf="themeList.length === 0">Нямате запазени часове!</div>
-  </div>
-  <div *ngIf="!themeList">
-    Loading...
-  </div>
+  <p>-------------------------------------------------------------------------------------</p>
+  <ng-container *ngFor="let theme of themeList" [theme]="theme">
+    <ng-container *ngIf="compare(theme.themeName)">
+      <p class="passed">Отминала</p>
+    </ng-container>
+    <ng-container *ngIf="userId !== '62657cef275b870db40b1e78'">
+      <p>{{theme.userId.username}} имате запазен час за {{theme.themeName}}!</p>
+    </ng-container>
+    <ng-container *ngIf="userId == '62657cef275b870db40b1e78'">
+      <p>{{theme.userId.username}} имате запазен час за {{theme.themeName}}!</p>
+      <p *ngIf="theme.userId._id !== '62657cef275b870db40b1e78'">tel: {{theme.userId.tel}}, email: {{theme.userId.email}}</p>
+  </ng-container>
+  <button (click)="hendleDeleteTheme(theme._id,userId)">Изтрий</button>
+    <p>--------------------------------------------------------------------------------------</p>
+  </ng-container>
+  <div *ngIf="themeList.length === 0">Нямате запазени часове!</div>
+</div>
+<div *ngIf="!themeList">
+  Loading...
+</div>

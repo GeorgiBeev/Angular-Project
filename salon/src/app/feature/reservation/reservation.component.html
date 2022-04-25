@@ -1,24 +1,72 @@
 <div>
-    <p>ЗАПАЗИ ЧАС</p>
-    <ng-container *ngFor="let num of nextMonth" >
+    <h2>ЗАПАЗИ ЧАС</h2>
+    <ng-container *ngFor="let num of nextMonth">
         <p>Дата {{num}}</p>
-    <button type="button" [disabled]="disabled.includes('10:00 ч. на ' + num)" (click)="handleReserve('10:00 ч. на ' + num )">10:00</button>
-    <button type="button" [disabled]="disabled.includes('10:30 ч. на ' + num)" (click)="handleReserve('10:30 ч. на ' + num )">10:30</button>
-    <button type="button" [disabled]="disabled.includes('11:00 ч. на ' + num)" (click)="handleReserve('11:00 ч. на ' + num )">11:00</button>
-    <button type="button" [disabled]="disabled.includes('11:30 ч. на ' + num)" (click)="handleReserve('11:30 ч. на ' + num )">11:30</button>
-    <button type="button" [disabled]="disabled.includes('12:00 ч. на ' + num)" (click)="handleReserve('12:00 ч. на ' + num )">12:00</button>
-    <button type="button" [disabled]="disabled.includes('12:30 ч. на ' + num)" (click)="handleReserve('12:30 ч. на ' + num )">12:30</button>
-    <button type="button" [disabled]="disabled.includes('13:00 ч. на ' + num)" (click)="handleReserve('13:00 ч. на ' + num )">13:00</button>
-    <button type="button" [disabled]="disabled.includes('13:30 ч. на ' + num)" (click)="handleReserve('13:30 ч. на ' + num )">13:30</button>
-    <button type="button" [disabled]="disabled.includes('14:00 ч. на ' + num)" (click)="handleReserve('14:00 ч. на ' + num )">14:00</button>
-    <button type="button" [disabled]="disabled.includes('14:30 ч. на ' + num)" (click)="handleReserve('14:30 ч. на ' + num )">14:30</button>
-    <button type="button" [disabled]="disabled.includes('15:00 ч. на ' + num)" (click)="handleReserve('15:00 ч. на ' + num )">15:00</button>
-    <button type="button" [disabled]="disabled.includes('15:30 ч. на ' + num)" (click)="handleReserve('15:30 ч. на ' + num )">15:30</button>
-    <button type="button" [disabled]="disabled.includes('16:00 ч. на ' + num)" (click)="handleReserve('16:00 ч. на ' + num )">16:00</button>
-    <button type="button" [disabled]="disabled.includes('16:30 ч. на ' + num)" (click)="handleReserve('16:30 ч. на ' + num )">16:30</button>
-    <button type="button" [disabled]="disabled.includes('17:00 ч. на ' + num)" (click)="handleReserve('17:00 ч. на ' + num )">17:00</button>
-    <button type="button" [disabled]="disabled.includes('17:30 ч. на ' + num)" (click)="handleReserve('17:30 ч. на ' + num )">17:30</button>
-</ng-container>
+        <button type="button"
+            [class]="compare('10:00 ч. на ' + num)?'':disabled.includes('10:00 ч. на ' + num)?'disabled':'active'"
+            [disabled]="disabled.includes('10:00 ч. на ' + num) || compare('10:00 ч. на ' + num)"
+            (click)="handleReserve('10:00 ч. на ' + num )">10:00</button>
+        <button type="button"
+            [class]="compare('10:30 ч. на ' + num)?'':disabled.includes('10:30 ч. на ' + num)?'disabled':'active'"
+            [disabled]="disabled.includes('10:30 ч. на ' + num) || compare('10:30 ч. на ' + num)"
+            (click)="handleReserve('10:30 ч. на ' + num )">10:30</button>
+        <button type="button"
+            [class]="compare('11:00 ч. на ' + num)?'':disabled.includes('11:00 ч. на ' + num)?'disabled':'active'"
+            [disabled]="disabled.includes('11:00 ч. на ' + num) || compare('11:00 ч. на ' + num)"
+            (click)="handleReserve('11:00 ч. на ' + num )">11:00</button>
+        <button type="button"
+            [class]="compare('11:30 ч. на ' + num)?'':disabled.includes('11:30 ч. на ' + num)?'disabled':'active'"
+            [disabled]="disabled.includes('11:30 ч. на ' + num) || compare('11:30 ч. на ' + num)"
+            (click)="handleReserve('11:30 ч. на ' + num )">11:30</button>
+        <button type="button"
+            [class]="compare('12:00 ч. на ' + num)?'':disabled.includes('12:00 ч. на ' + num)?'disabled':'active'"
+            [disabled]="disabled.includes('12:00 ч. на ' + num) || compare('12:00 ч. на ' + num)"
+            (click)="handleReserve('12:00 ч. на ' + num )">12:00</button>
+        <button type="button"
+            [class]="compare('12:30 ч. на ' + num)?'':disabled.includes('12:30 ч. на ' + num)?'disabled':'active'"
+            [disabled]="disabled.includes('12:30 ч. на ' + num) || compare('12:30 ч. на ' + num)"
+            (click)="handleReserve('12:30 ч. на ' + num )">12:30</button>
+        <button type="button"
+            [class]="compare('13:00 ч. на ' + num)?'':disabled.includes('13:00 ч. на ' + num)?'disabled':'active'"
+            [disabled]="disabled.includes('13:00 ч. на ' + num) || compare('13:00 ч. на ' + num)"
+            (click)="handleReserve('13:00 ч. на ' + num )">13:00</button>
+        <button type="button"
+            [class]="compare('13:30 ч. на ' + num)?'':disabled.includes('13:30 ч. на ' + num)?'disabled':'active'"
+            [disabled]="disabled.includes('13:30 ч. на ' + num) || compare('13:30 ч. на ' + num)"
+            (click)="handleReserve('13:30 ч. на ' + num )">13:30</button>
+        <button type="button"
+            [class]="compare('14:00 ч. на ' + num)?'':disabled.includes('14:00 ч. на ' + num)?'disabled':'active'"
+            [disabled]="disabled.includes('14:00 ч. на ' + num) || compare('14:00 ч. на ' + num)"
+            (click)="handleReserve('14:00 ч. на ' + num )">14:00</button>
+        <button type="button"
+            [class]="compare('14:30 ч. на ' + num)?'':disabled.includes('14:30 ч. на ' + num)?'disabled':'active'"
+            [disabled]="disabled.includes('14:30 ч. на ' + num) || compare('14:30 ч. на ' + num)"
+            (click)="handleReserve('14:30 ч. на ' + num )">14:30</button>
+        <button type="button"
+            [class]="compare('15:00 ч. на ' + num)?'':disabled.includes('15:00 ч. на ' + num)?'disabled':'active'"
+            [disabled]="disabled.includes('15:00 ч. на ' + num) || compare('15:00 ч. на ' + num)"
+            (click)="handleReserve('15:00 ч. на ' + num )">15:00</button>
+        <button type="button"
+            [class]="compare('15:30 ч. на ' + num)?'':disabled.includes('15:30 ч. на ' + num)?'disabled':'active'"
+            [disabled]="disabled.includes('15:30 ч. на ' + num) || compare('15:30 ч. на ' + num)"
+            (click)="handleReserve('15:30 ч. на ' + num )">15:30</button>
+        <button type="button"
+            [class]="compare('16:00 ч. на ' + num)?'':disabled.includes('16:00 ч. на ' + num)?'disabled':'active'"
+            [disabled]="disabled.includes('16:00 ч. на ' + num) || compare('16:00 ч. на ' + num)"
+            (click)="handleReserve('16:00 ч. на ' + num )">16:00</button>
+        <button type="button"
+            [class]="compare('16:30 ч. на ' + num)?'':disabled.includes('16:30 ч. на ' + num)?'disabled':'active'"
+            [disabled]="disabled.includes('16:30 ч. на ' + num) || compare('16:30 ч. на ' + num)"
+            (click)="handleReserve('16:30 ч. на ' + num )">16:30</button>
+        <button type="button"
+            [class]="compare('17:00 ч. на ' + num)?'':disabled.includes('17:00 ч. на ' + num)?'disabled':'active'"
+            [disabled]="disabled.includes('17:00 ч. на ' + num) || compare('17:00 ч. на ' + num)"
+            (click)="handleReserve('17:00 ч. на ' + num )">17:00</button>
+        <button type="button"
+            [class]="compare('17:30 ч. на ' + num)?'':disabled.includes('17:30 ч. на ' + num)?'disabled':'active'"
+            [disabled]="disabled.includes('17:30 ч. на ' + num) || compare('17:30 ч. на ' + num)"
+            (click)="handleReserve('17:30 ч. на ' + num )">17:30</button>
+    </ng-container>
 
-    
+
 </div>

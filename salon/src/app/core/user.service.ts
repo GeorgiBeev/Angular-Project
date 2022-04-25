@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IUser } from './interfaces/user';
-//import { StorageService } from './storage.service';
 import { tap } from 'rxjs/operators';
 import { ITheme } from './interfaces/theme';
 
@@ -39,6 +38,10 @@ export class UserService {
 
   loadTheamList(): Observable<ITheme[]>{
     return this.httpClient.get<ITheme[]>(`${environment.apiUrl}/themes`)
+  }
+
+  deleteTheme$(themeId: string, userId: string){
+    return this.httpClient.delete<string>(`${environment.apiUrl}/themes/${themeId}/userId/${userId}`,{withCredentials: true})
   }
 
 }

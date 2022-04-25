@@ -1,0 +1,9 @@
+.active{
+    color: white;
+    background-color: #41b926b1;
+}
+
+.disabled{
+    color: white;
+    background-color: #b92d26b1;
+}

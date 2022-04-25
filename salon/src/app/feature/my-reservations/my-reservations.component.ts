@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observer } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth.service';
+import { compare } from 'src/app/auth/util';
 import { ITheme } from 'src/app/core/interfaces/theme';
 import { IUser } from 'src/app/core/interfaces/user';
 import { UserService } from 'src/app/core/user.service';
@@ -19,14 +21,23 @@ export class MyReservationsComponent implements OnInit {
 
   username: string;
 
-  constructor(private userService: UserService, private authService: AuthService) { }
+  compare: Function;
+
+  isSee:boolean;
+
+  data:string;
+
+  constructor(private userService: UserService, private authService: AuthService, private router: Router) { }
 
 
 
   ngOnInit(): void {
+
+    this.compare = compare;
+
     this.authService.currentUser$.subscribe((user) => {
       this.userId = user._id
-      this.username= user.username
+      this.username = user.username
     })
 
     this.userService.loadTheamList().subscribe({
@@ -34,9 +45,26 @@ export class MyReservationsComponent implements OnInit {
         this.themeList = themeList
       },
       complete: () => {
-        this.themeList = this.themeList.filter(theme => theme.userId._id == this.userId);
+        console.log(this.username);
+
+        if (this.userId !== '62657cef275b870db40b1e78') {
+          this.themeList = this.themeList.filter(theme => theme.userId._id == this.userId);
+        }
       }
     })
   }
 
+  hendleDeleteTheme(themeId: string, userId: string): void {
+
+    this.userService.deleteTheme$(themeId, userId)
+      .subscribe({
+        next: (theme) => {
+          console.log(theme);
+        },
+        complete: () => {
+          this.router.navigate(['/reservation'])
+        }
+      })
+
+  }
 }
