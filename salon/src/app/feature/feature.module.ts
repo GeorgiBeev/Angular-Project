@@ -5,6 +5,7 @@ import { ProceduresComponent } from './procedures/procedures.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from '../app-routing.module';
+import { ContactsComponent } from './contacts/contacts.component';
 
 
 
@@ -13,7 +14,8 @@ import { AppRoutingModule } from '../app-routing.module';
   declarations: [
     ProceduresComponent,
     ReservationComponent,
-    MyReservationsComponent,],
+    MyReservationsComponent,
+    ContactsComponent,],
   imports: [
     CommonModule,
     RouterModule

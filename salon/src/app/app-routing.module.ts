@@ -1,5 +1,6 @@
 import { RouterModule, Routes } from "@angular/router";
 import { AuthGuard } from "./core/guard/auth.guard";
+import { ContactsComponent } from "./feature/contacts/contacts.component";
 import { MyReservationsComponent } from "./feature/my-reservations/my-reservations.component";
 import { HomePageComponent } from "./feature/pages/home-page/home-page.component";
 import { NotFoundPageComponent } from "./feature/pages/not-found-page/not-found-page.component";
@@ -29,6 +30,10 @@ const routes: Routes = [
         path: 'my-reservations',
         canActivate: [AuthGuard],
         component: MyReservationsComponent
+    },
+    {
+        path: 'contacts',
+        component: ContactsComponent
     },
     {
         path: '**',

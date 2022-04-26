@@ -15,54 +15,51 @@ export class ReservationComponent implements OnInit {
   disabled: string[];
   themeList: ITheme[];
   timeNow: string;
-  compare:Function ;
-    
-  
-  
+  compare: Function;
+  isChoosProcedure: boolean;
+  procedure: string
+
+
+
 
   constructor(private userService: UserService, private router: Router) { }
 
 
   ngOnInit(): void {
 
-this.compare = compare;
+    this.isChoosProcedure = false;
 
-    this.disabled=[];
-    
+    this.compare = compare;
+
+    this.disabled = [];
+
     this.userService.loadTheamList().subscribe({
       next: (themeList) => {
         this.themeList = themeList;
       },
-      complete: () => {       
+      complete: () => {
         this.themeList.forEach((theme) => this.disabled.push(theme.themeName));
-        console.log('this.themeList',this.themeList);
-      }      
+        console.log('this.themeList', this.themeList);
+      }
     })
-    this.timeNow= hourNow();
+    this.timeNow = hourNow();
 
-    
     this.nextMonth = nextMonth();
-
-
   }
-
-
-
 
   handleReserve(time: string): void {
     this.userService.reservationHour$({
       themeName: time,
+      themeProcedure: this.procedure
     }).subscribe(() => {
       this.router.navigate(['/my-reservations'])
     })
   }
 
+  handleChoose(procedure): void {
+    this.isChoosProcedure = true
+    this.procedure = procedure
+    console.log(this.procedure);
+    
+  }
 }
- /*this.userService.loadTheamList().subscribe({
-    next: (themeList) => {
-      this.themeList = themeList
-    },
-    complete: () => {
-      this.themeList = this.themeList.filter(theme => theme.userId._id == this.userId);
-    }
-  })*/

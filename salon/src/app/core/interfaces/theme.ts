@@ -24,6 +24,7 @@ export interface ITheme<T = string> extends IBase {
   //posts: T[];
   themeName: string;
   userId: IUser;
+  themeProcedure: string;
 }
 
 // Option 3

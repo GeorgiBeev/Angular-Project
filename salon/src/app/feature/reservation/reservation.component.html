@@ -1,5 +1,84 @@
-<div>
-    <h2>ЗАПАЗИ ЧАС</h2>
+<ng-container *ngIf="!isChoosProcedure">
+    <div>
+        <h2>ПРОЦЕДУРИ ПРЕДЛАГАНИ OT САЛОН "ВАЛЕНТИНА"</h2>
+        <ul>
+            <h3>Подстригване</h3>
+            <li>
+                Дамско подстригване
+                <button (click)="handleChoose('Дамско подстригване')">Избери</button>
+            </li>
+            <li>
+                Мъжко
+                <button (click)="handleChoose('Мъжко подстригване')">Избери</button>
+            </li>
+            <li>
+                Детско
+                <button (click)="handleChoose('Детско подстригване')">Избери</button>
+            </li>
+            <li>
+                Машинка
+                <button (click)="handleChoose('Подстригване с машинка')">Избери</button>
+            </li>
+            <li>
+                Бретон
+                <button (click)="handleChoose('Подстригване на бретон')">Избери</button>
+            </li>
+        </ul>
+        <ul>
+            <h3>Боядисване</h3>
+            <li>
+                Къса коса
+                <button (click)="handleChoose('Боядисване-къса коса')">Избери</button>
+            </li>
+            <li>
+                Дълга коса
+                <button (click)="handleChoose('Боядисване-дълга коса')">Избери</button>
+            </li>
+            <li>
+                Матиране
+                <button (click)="handleChoose('Матиране')">Избери</button>
+            </li>
+           
+        </ul>
+        <ul>
+            <h3>Сешоар /прическа/</h3>
+            <li>
+                Къса коса
+                <button (click)="handleChoose('Сешоар-къса коса')">Избери</button>
+            </li>
+            <li>
+                Дълга коса
+                <button (click)="handleChoose('Сешоар-дълга коса')">Избери</button>
+            </li>
+            <li>
+                Раздвижен /къдрав/
+                <button (click)="handleChoose('Сешоар-раздвижен')">Избери</button>
+            </li>
+           
+        </ul>
+        <ul>
+            <h3>Навиване</h3>
+            <li>
+                Средно дълга
+                <button (click)="handleChoose('Навиване-средно дълга коса')">Избери</button>
+            </li>
+            <li>
+                Дълга коса
+                <button (click)="handleChoose('Навиване-дълга коса')">Избери</button>
+            </li>
+        </ul>
+        <ul>
+            <h3>Официална прическа</h3>
+            <li>
+                Официална прическа
+                <button (click)="handleChoose('Официална прическа')">Избери</button>
+            </li>
+        </ul>
+    </div>
+</ng-container>
+    
+<ng-container *ngIf="isChoosProcedure">
+    <h2>ЗАПАЗИ ЧАС ЗА ПРОЦЕДУРА: "{{procedure}}"</h2>
     <ng-container *ngFor="let num of nextMonth">
         <p>Дата {{num}}</p>
         <button type="button"
@@ -69,4 +148,4 @@
     </ng-container>
 
 
-</div>
+</ng-container>

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Observer } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth.service';
-import { compare } from 'src/app/auth/util';
+import { compare, strToNum } from 'src/app/auth/util';
 import { ITheme } from 'src/app/core/interfaces/theme';
 import { IUser } from 'src/app/core/interfaces/user';
 import { UserService } from 'src/app/core/user.service';
@@ -23,10 +23,6 @@ export class MyReservationsComponent implements OnInit {
 
   compare: Function;
 
-  isSee:boolean;
-
-  data:string;
-
   constructor(private userService: UserService, private authService: AuthService, private router: Router) { }
 
 
@@ -42,10 +38,14 @@ export class MyReservationsComponent implements OnInit {
 
     this.userService.loadTheamList().subscribe({
       next: (themeList) => {
-        this.themeList = themeList
+
+        this.themeList = themeList;
       },
       complete: () => {
-        console.log(this.username);
+
+        this.themeList = this.themeList.sort((a, b): number => {
+          return strToNum(a.themeName) - strToNum(b.themeName);
+        });
 
         if (this.userId !== '62657cef275b870db40b1e78') {
           this.themeList = this.themeList.filter(theme => theme.userId._id == this.userId);

@@ -6,6 +6,10 @@ const themeSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    themeProcedure: {
+        type: String,
+        required: true
+    },
     /*subscribers: [{
         type: ObjectId,
         ref: "User"

@@ -57,7 +57,7 @@ export function nextMonth() {
         }
         monthArr.push(iStr + '.' + monthStr + '.' + year + 'г.');
     }
-    for (let i = 1; i < day; i++) {
+    for (let i = 1; i <= day; i++) {
         let iStr = '';
         if (i < 10) {
             iStr = '0' + i;
@@ -106,7 +106,7 @@ export function hourNow() {
     return ('' + year + monthStr + dayStr + hourStr + minuteStr);
 }
 
-export function compare(reservationTime: string):boolean {
+export function compare(reservationTime: string): boolean {
     let result: string = '';
     let currentTime = hourNow();
     let hour: string = reservationTime.slice(0, 2);
@@ -116,9 +116,20 @@ export function compare(reservationTime: string):boolean {
     let year: string = reservationTime.slice(-6, -2);
     result = year + month + data + hour + minute;
 
-  
-    
+
+
     return (Number(result) < Number(currentTime));
+}
+
+export function strToNum(themeName: string): number {
+    let result: string = '';
+    let hour: string = themeName.slice(0, 2);
+    let minute: string = themeName.slice(3, 5);
+    let data: string = themeName.slice(12, 14);
+    let month: string = themeName.slice(-9, -7);
+    let year: string = themeName.slice(-6, -2);
+    result = year + month + data + hour + minute;
+    return Number(result);
 }
 
 //'12:00 ч. на 25.04.2022г.'

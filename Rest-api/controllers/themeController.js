@@ -23,10 +23,10 @@ function getTheme(req, res, next) {
 }
 
 function createTheme(req, res, next) {
-    const { themeName/*, postText */ } = req.body;
+    const { themeName, themeProcedure/*, postText */ } = req.body;
     const { _id: userId } = req.user;
 
-    themeModel.create({ themeName, userId/*, subscribers: [userId] */ })
+    themeModel.create({ themeName, userId, themeProcedure/*, subscribers: [userId] */ })
         .then(theme => {
             res.status(200).json(theme)
         })

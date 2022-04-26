@@ -32,7 +32,7 @@ export class UserService {
     return this.httpClient.put<IUser>(`${environment.apiUrl}/users/profile`, newUser, { withCredentials: true })
   }
 
-  reservationHour$(body: { themeName: string/*, postText: string */}): Observable<ITheme> {
+  reservationHour$(body: { themeName: string, themeProcedure: string/*, postText: string */}): Observable<ITheme> {
     return this.httpClient.post<ITheme>(`${environment.apiUrl}/themes`, body, { withCredentials: true });
   }
 
