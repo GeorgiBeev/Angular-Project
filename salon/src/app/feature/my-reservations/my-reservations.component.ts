@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observer } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
@@ -23,11 +23,13 @@ export class MyReservationsComponent implements OnInit {
 
   compare: Function;
 
+
   constructor(private userService: UserService, private authService: AuthService, private router: Router) { }
 
 
-
   ngOnInit(): void {
+    console.log('ngOnInit');
+
 
     this.compare = compare;
 
@@ -35,14 +37,17 @@ export class MyReservationsComponent implements OnInit {
       this.userId = user._id
       this.username = user.username
     })
+    
+    this.loadThemeList();
 
+  }
+
+  loadThemeList() {
     this.userService.loadTheamList().subscribe({
       next: (themeList) => {
-
         this.themeList = themeList;
       },
       complete: () => {
-
         this.themeList = this.themeList.sort((a, b): number => {
           return strToNum(a.themeName) - strToNum(b.themeName);
         });
@@ -54,6 +59,7 @@ export class MyReservationsComponent implements OnInit {
     })
   }
 
+
   hendleDeleteTheme(themeId: string, userId: string): void {
 
     this.userService.deleteTheme$(themeId, userId)
@@ -62,7 +68,7 @@ export class MyReservationsComponent implements OnInit {
           console.log(theme);
         },
         complete: () => {
-          this.router.navigate(['/reservation'])
+          this.loadThemeList();
         }
       })
 

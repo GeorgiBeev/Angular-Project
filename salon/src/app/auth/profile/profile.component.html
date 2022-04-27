@@ -23,11 +23,11 @@
             <form #editProfileForm="ngForm" (ngSubmit)="updateProfile(editProfileForm)">
                 <div class="flex">
                     <p>Username: </p>
-                    <p>{{currentUser.username}}</p>
+                    <input type="text" #username="ngModel" [class.input-error]="username.touched && username.invalid" name="username" ngModel required minlength="5" id="username" value="Johny">
                 </div>
                 <div class="flex">
                     <p>Email: </p>
-                    <input type="email" #email="ngModel"  [class.input-error]="email.touched && email.invalid" ngModel required emailValidator name="email" id="email" value="john.doe@gmail.com">
+                    <input type="email" #email="ngModel"  [class.input-error]="email.touched && email.invalid" ngModel required emailValidator name="email" id="email" value="(currentUser$ | async).username">
                 </div>
                 <div class="flex">
                     <p>Phone: </p>
