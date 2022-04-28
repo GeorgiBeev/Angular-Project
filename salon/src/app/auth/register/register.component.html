@@ -80,9 +80,15 @@
                         placeholder="******"
                         [class.input-error]="passwordsGroup.controls['rePassword'].touched && passwordsGroup.controls['rePassword'].invalid">
                 </p>
-                <ng-container *ngIf="passwordsGroup.controls['rePassword'].touched && passwordsGroup.controls['rePassword'].invalid">
-                    <p class="error">Repeat Password does not match password!</p>
-                </ng-container>
+                <ng-container
+                *ngIf="passwordsGroup.controls['rePassword'].touched && passwordsGroup.controls['rePassword'].invalid">
+                <p *ngIf="passwordsGroup.controls['rePassword'].errors.required" class="error">
+                    Password is required!
+                </p>
+                <p *ngIf="passwordsGroup.controls['rePassword'].errors.passwordMissmatch" class="error">
+                    Repeat Password does not match password!
+                </p>
+            </ng-container>
         </div>
 
         <button [disabled]="registerFormGroup.invalid">Create Account</button>

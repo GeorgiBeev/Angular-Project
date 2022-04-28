@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
     'email': new FormControl(null, [Validators.required, emailValidator]),
     'passwords': new FormGroup({
       'password': this.passwordControl,
-      'rePassword': new FormControl(null,[passwordMatch(this.passwordControl)]),
+      'rePassword': new FormControl(null,[Validators.required, passwordMatch(this.passwordControl)]),
     }),
     'tel': new FormControl(null, [Validators.required, Validators.minLength(10)]),
   })

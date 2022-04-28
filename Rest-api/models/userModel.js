@@ -7,6 +7,8 @@ const { ObjectId } = mongoose.Schema.Types;
 const userSchema = new mongoose.Schema({
     tel: {
         type: String,
+        required: true,
+        minlength: [10, 'Username should be at least 10 characters'],
     },
     email: {
         type: String,
