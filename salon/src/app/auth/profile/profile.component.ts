@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
@@ -17,6 +17,8 @@ export class ProfileComponent implements OnInit {
   currentUser: IUser;
 
   isInEditMode: boolean = false;
+
+  errorMessage: string = '';
 
   constructor(private userService: UserService, private router: Router,public authService: AuthService) { }
 
@@ -54,6 +56,7 @@ export class ProfileComponent implements OnInit {
 
   
   updateProfile(editProfileForm: NgForm): void {
+    this.errorMessage = '';
     const user = {
       username: editProfileForm.value.username,
       email: editProfileForm.value.email,
@@ -66,8 +69,9 @@ export class ProfileComponent implements OnInit {
     this.loadProfile();
     this.authService._currentUser.next(user);
     },
-    error: (error) => {
-      console.error(error);
+    error: (err) => {
+      console.error(err);
+      this.errorMessage = err.error.message;
     }
    })
   }

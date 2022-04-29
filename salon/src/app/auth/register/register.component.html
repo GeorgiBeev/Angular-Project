@@ -91,7 +91,7 @@
             </ng-container>
         </div>
 
-        <button [disabled]="registerFormGroup.invalid">Create Account</button>
+        <button [disabled]="registerFormGroup.invalid" [style.background-color]="registerFormGroup.invalid?'grey':'#9926b9'">Create Account</button>
 
         <p class="text-center">
             Have an account?

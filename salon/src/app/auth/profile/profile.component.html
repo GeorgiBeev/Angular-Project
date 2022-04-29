@@ -20,23 +20,28 @@
 
 
         <ng-container *ngIf="isInEditMode">
+            <p *ngIf="errorMessage" class="error">{{errorMessage}}</p>
             <form #editProfileForm="ngForm" (ngSubmit)="updateProfile(editProfileForm)">
                 <div class="flex">
                     <p>Username: </p>
-                    <input type="text" #username="ngModel" [class.input-error]="username.touched && username.invalid" name="username" ngModel required minlength="5" id="username" value="Johny">
+                    <input type="text" #username="ngModel" [class.input-error]="username.touched && username.invalid"
+                        name="username" ngModel required minlength="5" id="username" value="Johny">
                 </div>
                 <div class="flex">
                     <p>Email: </p>
-                    <input type="email" #email="ngModel"  [class.input-error]="email.touched && email.invalid" ngModel required emailValidator name="email" id="email" value="(currentUser$ | async).username">
+                    <input type="email" #email="ngModel" [class.input-error]="email.touched && email.invalid" ngModel
+                        required emailValidator name="email" id="email" value="(currentUser$ | async).username">
                 </div>
                 <div class="flex">
                     <p>Phone: </p>
                     <div>
-                        <input #tel="ngModel"  [class.input-error]="tel.touched && tel.invalid" ngModel required minlength="10" type="text" name="tel" id="tel" value="885 888 888">
+                        <input #tel="ngModel" [class.input-error]="tel.touched && tel.invalid" ngModel required
+                            minlength="10" type="text" name="tel" id="tel" value="885 888 888">
                     </div>
                 </div>
-                <button (click)="isInEditMode = false" class="red-button">Cancel</button>
-                <button [disabled]="editProfileForm.invalid" class="green-button">Save</button>
+                <button  (click)="errorMessage=''" (click)="isInEditMode = false"  class="red-button">Cancel</button>
+                <button [disabled]="editProfileForm.invalid"
+                    [style.background-color]="editProfileForm.invalid?'grey':'green'">Save</button>
             </form>
         </ng-container>
     </ng-container>
