@@ -1,0 +1,3 @@
+This application is designed to be used in hair salons. In case of unlogged user, it provides information about the list of procedures and the possibility of contacts.
+When the user registers and logs in the application, it is given the opportunity to see not only the list of procedures, but also their prices. It is also possible to make a reservation for a specific procedure and see a list of reservations made. You can delete a reservation if you wish.
+The feature is that when registering and logging in to the application with username: admin you can see the reservations of all users.

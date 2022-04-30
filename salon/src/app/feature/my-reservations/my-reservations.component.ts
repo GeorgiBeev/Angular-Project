@@ -52,7 +52,7 @@ export class MyReservationsComponent implements OnInit {
           return strToNum(a.themeName) - strToNum(b.themeName);
         });
 
-        if (this.userId !== '62657cef275b870db40b1e78') {
+        if (this.username !== 'admin') {
           this.themeList = this.themeList.filter(theme => theme.userId._id == this.userId);
         }
       }
