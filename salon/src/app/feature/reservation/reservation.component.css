@@ -1,9 +1,81 @@
-.active{
+.active {
     color: white;
     background-color: #41b926b1;
 }
 
-.disabled{
+.disabled {
     color: white;
-    background-color: #b92d26b1;
+    background-color: red;
+}
+
+button {
+    padding: 5px 15px;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border-color: black;
+    font-size: 15px;
+}
+
+button.active {
+    cursor: pointer;
+}
+
+button.active:hover {
+    color: red;
+}
+
+p.data {
+    text-align: center;
+    font-size: 25px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 30px;
+}
+
+div.hour {
+    width: 350px;
+    margin-left: 575px;
+    text-align: center;
+}
+
+span {
+    width: 130px;
+    display: inline-block;
+    font-size: 20px;
+    
+}
+
+li button {
+    background-color: rgb(76, 235, 76);
+    color: white;
+    cursor: pointer;
+}
+
+li button:hover {
+    color: black;
+}
+
+div.proced {
+    display: inline-flex;
+    flex-direction: row;
+    align-items:flex-start;
+flex-wrap: wrap;
+
+}
+
+ul {
+    border-width: 2px;
+    border-style:solid;
+    background-color:rgb(212, 111, 223);
+    border-radius: 10px;
+    margin: 5px;
+    width: 250px;
+
+}
+h2{
+    text-align: center;
 }

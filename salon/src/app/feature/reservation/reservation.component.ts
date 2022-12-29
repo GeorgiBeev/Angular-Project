@@ -17,9 +17,9 @@ export class ReservationComponent implements OnInit {
   timeNow: string;
   compare: Function;
   isChoosProcedure: boolean;
-  procedure: string
-
-
+  procedure: string;
+  workHour: string[] = ['10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00',
+    '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30'];
 
 
   constructor(private userService: UserService, private router: Router) { }
@@ -45,6 +45,8 @@ export class ReservationComponent implements OnInit {
     this.timeNow = hourNow();
 
     this.nextMonth = nextMonth();
+    console.log(nextMonth());
+
   }
 
   handleReserve(time: string): void {
@@ -60,6 +62,6 @@ export class ReservationComponent implements OnInit {
     this.isChoosProcedure = true
     this.procedure = procedure
     console.log(this.procedure);
-    
+
   }
 }

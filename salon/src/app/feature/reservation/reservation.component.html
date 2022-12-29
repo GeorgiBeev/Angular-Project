@@ -1,150 +1,95 @@
 <ng-container *ngIf="!isChoosProcedure">
-    <div>
-        <h2>ПРОЦЕДУРИ ПРЕДЛАГАНИ OT САЛОН "ВАЛЕНТИНА"</h2>
-        <ul>
-            <h3>Подстригване</h3>
+    <h1>ПРОЦЕДУРИ ПРЕДЛАГАНИ OT САЛОН "ВАЛЕНТИНА"</h1>
+    <div class="proced">
+        <ul type="none">
+            <h2>Подстригване</h2>
             <li>
-                Дамско подстригване
+                <span class="proced">Дамско подстригване</span>
                 <button (click)="handleChoose('Дамско подстригване')">Избери</button>
             </li>
             <li>
-                Мъжко
+                <span>Мъжко</span>
                 <button (click)="handleChoose('Мъжко подстригване')">Избери</button>
             </li>
             <li>
-                Детско
+                <span>Детско</span>
                 <button (click)="handleChoose('Детско подстригване')">Избери</button>
             </li>
             <li>
-                Машинка
+                <span>Машинка</span>
                 <button (click)="handleChoose('Подстригване с машинка')">Избери</button>
             </li>
             <li>
-                Бретон
+                <span>Бретон</span>
                 <button (click)="handleChoose('Подстригване на бретон')">Избери</button>
             </li>
         </ul>
-        <ul>
-            <h3>Боядисване</h3>
+        <ul type="none">
+            <h2>Боядисване</h2>
             <li>
-                Къса коса
+                <span>Къса коса</span>
                 <button (click)="handleChoose('Боядисване-къса коса')">Избери</button>
             </li>
             <li>
-                Дълга коса
+                <span>Дълга коса</span>
                 <button (click)="handleChoose('Боядисване-дълга коса')">Избери</button>
             </li>
             <li>
-                Матиране
+                <span>Матиране</span>
                 <button (click)="handleChoose('Матиране')">Избери</button>
             </li>
 
         </ul>
-        <ul>
-            <h3>Сешоар /прическа/</h3>
+        <ul type="none">
+            <h2>Сешоар</h2>
             <li>
-                Къса коса
+                <span>Къса коса</span>
                 <button (click)="handleChoose('Сешоар-къса коса')">Избери</button>
             </li>
             <li>
-                Дълга коса
+                <span>Дълга коса</span>
                 <button (click)="handleChoose('Сешоар-дълга коса')">Избери</button>
             </li>
             <li>
-                Раздвижен /къдрав/
+                <span>Раздвижен</span>
                 <button (click)="handleChoose('Сешоар-раздвижен')">Избери</button>
             </li>
 
         </ul>
-        <ul>
-            <h3>Навиване</h3>
+        <ul type="none">
+            <h2>Навиване</h2>
             <li>
-                Средно дълга
+                <span>Средно дълга</span>
                 <button (click)="handleChoose('Навиване-средно дълга коса')">Избери</button>
             </li>
             <li>
-                Дълга коса
+                <span>Дълга коса</span>
                 <button (click)="handleChoose('Навиване-дълга коса')">Избери</button>
             </li>
         </ul>
-        <ul>
-            <h3>Официална прическа</h3>
+        <ul type="none">
+            <h2>Официална прическа</h2>
             <li>
-                Официална прическа
+                <span>Официална прическа</span>
                 <button (click)="handleChoose('Официална прическа')">Избери</button>
             </li>
         </ul>
     </div>
 </ng-container>
 
-<ng-container  *ngIf="isChoosProcedure">
+<ng-container *ngIf="isChoosProcedure">
     <h2>ЗАПАЗИ ЧАС ЗА ПРОЦЕДУРА: "{{procedure}}"</h2>
     <ng-container *ngFor="let num of nextMonth">
-            <p>Дата {{num}}</p>
-            <button type="button"
-                [class]="compare('10:00 ч. на ' + num)?'':disabled.includes('10:00 ч. на ' + num)?'disabled':'active'"
-                [disabled]="disabled.includes('10:00 ч. на ' + num) || compare('10:00 ч. на ' + num)"
-                (click)="handleReserve('10:00 ч. на ' + num )">10:00</button>
-            <button type="button"
-                [class]="compare('10:30 ч. на ' + num)?'':disabled.includes('10:30 ч. на ' + num)?'disabled':'active'"
-                [disabled]="disabled.includes('10:30 ч. на ' + num) || compare('10:30 ч. на ' + num)"
-                (click)="handleReserve('10:30 ч. на ' + num )">10:30</button>
-            <button type="button"
-                [class]="compare('11:00 ч. на ' + num)?'':disabled.includes('11:00 ч. на ' + num)?'disabled':'active'"
-                [disabled]="disabled.includes('11:00 ч. на ' + num) || compare('11:00 ч. на ' + num)"
-                (click)="handleReserve('11:00 ч. на ' + num )">11:00</button>
-            <button type="button"
-                [class]="compare('11:30 ч. на ' + num)?'':disabled.includes('11:30 ч. на ' + num)?'disabled':'active'"
-                [disabled]="disabled.includes('11:30 ч. на ' + num) || compare('11:30 ч. на ' + num)"
-                (click)="handleReserve('11:30 ч. на ' + num )">11:30</button>
-            <button type="button"
-                [class]="compare('12:00 ч. на ' + num)?'':disabled.includes('12:00 ч. на ' + num)?'disabled':'active'"
-                [disabled]="disabled.includes('12:00 ч. на ' + num) || compare('12:00 ч. на ' + num)"
-                (click)="handleReserve('12:00 ч. на ' + num )">12:00</button>
-            <button type="button"
-                [class]="compare('12:30 ч. на ' + num)?'':disabled.includes('12:30 ч. на ' + num)?'disabled':'active'"
-                [disabled]="disabled.includes('12:30 ч. на ' + num) || compare('12:30 ч. на ' + num)"
-                (click)="handleReserve('12:30 ч. на ' + num )">12:30</button>
-            <button type="button"
-                [class]="compare('13:00 ч. на ' + num)?'':disabled.includes('13:00 ч. на ' + num)?'disabled':'active'"
-                [disabled]="disabled.includes('13:00 ч. на ' + num) || compare('13:00 ч. на ' + num)"
-                (click)="handleReserve('13:00 ч. на ' + num )">13:00</button>
-            <button type="button"
-                [class]="compare('13:30 ч. на ' + num)?'':disabled.includes('13:30 ч. на ' + num)?'disabled':'active'"
-                [disabled]="disabled.includes('13:30 ч. на ' + num) || compare('13:30 ч. на ' + num)"
-                (click)="handleReserve('13:30 ч. на ' + num )">13:30</button>
-            <button type="button"
-                [class]="compare('14:00 ч. на ' + num)?'':disabled.includes('14:00 ч. на ' + num)?'disabled':'active'"
-                [disabled]="disabled.includes('14:00 ч. на ' + num) || compare('14:00 ч. на ' + num)"
-                (click)="handleReserve('14:00 ч. на ' + num )">14:00</button>
-            <button type="button"
-                [class]="compare('14:30 ч. на ' + num)?'':disabled.includes('14:30 ч. на ' + num)?'disabled':'active'"
-                [disabled]="disabled.includes('14:30 ч. на ' + num) || compare('14:30 ч. на ' + num)"
-                (click)="handleReserve('14:30 ч. на ' + num )">14:30</button>
-            <button type="button"
-                [class]="compare('15:00 ч. на ' + num)?'':disabled.includes('15:00 ч. на ' + num)?'disabled':'active'"
-                [disabled]="disabled.includes('15:00 ч. на ' + num) || compare('15:00 ч. на ' + num)"
-                (click)="handleReserve('15:00 ч. на ' + num )">15:00</button>
-            <button type="button"
-                [class]="compare('15:30 ч. на ' + num)?'':disabled.includes('15:30 ч. на ' + num)?'disabled':'active'"
-                [disabled]="disabled.includes('15:30 ч. на ' + num) || compare('15:30 ч. на ' + num)"
-                (click)="handleReserve('15:30 ч. на ' + num )">15:30</button>
-            <button type="button"
-                [class]="compare('16:00 ч. на ' + num)?'':disabled.includes('16:00 ч. на ' + num)?'disabled':'active'"
-                [disabled]="disabled.includes('16:00 ч. на ' + num) || compare('16:00 ч. на ' + num)"
-                (click)="handleReserve('16:00 ч. на ' + num )">16:00</button>
-            <button type="button"
-                [class]="compare('16:30 ч. на ' + num)?'':disabled.includes('16:30 ч. на ' + num)?'disabled':'active'"
-                [disabled]="disabled.includes('16:30 ч. на ' + num) || compare('16:30 ч. на ' + num)"
-                (click)="handleReserve('16:30 ч. на ' + num )">16:30</button>
-            <button type="button"
-                [class]="compare('17:00 ч. на ' + num)?'':disabled.includes('17:00 ч. на ' + num)?'disabled':'active'"
-                [disabled]="disabled.includes('17:00 ч. на ' + num) || compare('17:00 ч. на ' + num)"
-                (click)="handleReserve('17:00 ч. на ' + num )">17:00</button>
-            <button type="button"
-                [class]="compare('17:30 ч. на ' + num)?'':disabled.includes('17:30 ч. на ' + num)?'disabled':'active'"
-                [disabled]="disabled.includes('17:30 ч. на ' + num) || compare('17:30 ч. на ' + num)"
-                (click)="handleReserve('17:30 ч. на ' + num )">17:30</button>
+
+        <p class="data">Дата {{num}}</p>
+        <div class="hour">
+            <ng-container *ngFor="let item of workHour">
+                <button type="button"
+                    [class]="compare(item + ' ч. на ' + num)?'':disabled.includes(item + ' ч. на ' + num)?'disabled':'active'"
+                    [disabled]="disabled.includes(item + ' ч. на ' + num) || compare(item + ' ч. на ' + num)"
+                    (click)="handleReserve(item + ' ч. на ' + num )">{{item}}</button>
+            </ng-container>
+        </div>
     </ng-container>
 
 
